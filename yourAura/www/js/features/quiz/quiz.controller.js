@@ -9,45 +9,42 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
 // //blue button working with popup
 	function showColor (color) {
 		console.log(color);
-		var template;
 		switch(color){
 			case "red": 
-				template = `competitive, energizing, exciting,
-        					passionate, impulsive, powerful,
-        					intense, aggressive, strong`;
+				
         		break; 
-        	case "orange":
-        		template = `joyful, ambitious, fun,
-        					happy, energetic, balanced,
-        					vibrant, warm, enthusiastic`;
+        	case "yellow/orange":
+        		
         		break;
-        	case "yellow":
-        		template = `cheerful, idealist, hopeful,
-        					imaginative, philosophical, youthful,
-        					optimistic, generous`;
-        		break;
-        	case "green":
-        		template = `lively, envious, spiritual,
-        					stable, successful, grateful`;
-        		break;
-        	case "blue":
-        		template = `protective, unique, peaceful,
-         					quiet, understanding, trustworthy,
-         					harmonious, loyal, calm`;
+        	case "blue/green":
+        		
         		break;
         	case "purple":
-        		template = `nostalgic, delicate, mysterious, 
-        					transformative, independent,
-        					respectful, wealthy, enlightening`;
-        		break									
+        		
+        		break;									
 		}
-		var alertPopup = $ionicPopup.alert({
+		var showPopup = $ionicPopup.show({
      		title: 'Your aura is ' + color,
-     		template: 'You are ' + template
+     		//template: 'You are ' + template,
+            subTitle: 'Click next to continue to take photo ',
+            buttons: [
+                {text: 'Okay'},
+                {text: 'Next',
+                type: 'button-positive',
+                    // onTap: function(e) {
+                    //     if (!$scope.data.image){
+                    //     //take user to upload page or directyly to camera
+                    //     e.preventDefalt();
+                    //     } else {
+                    //     return $scope.data.image
+                    //     }   
+                    // }
+                }
+            ]
    		});
 
-		 // alertPopup.then(function(res) {
-   //   		console.log('Thank you for working');
+		 // showPopup.then(function(res) {
+   //    		console.log('Thank you for working',res);
    	};  
 
 
@@ -75,9 +72,7 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
 	vm.colors.two;
 	vm.colors.three;
 	vm.colors.four;
-	vm.colors.five;
-	vm.colors.six;
-	vm.colors.seven;
+	
 
 	vm.findColor = function() {
 		
