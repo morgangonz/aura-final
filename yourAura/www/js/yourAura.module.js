@@ -8,7 +8,8 @@ angular
         'yourAura.measure',
         'yourAura.colors',
         'yourAura.login',
-        'yourAura.signup'
+        'yourAura.signup',
+        'yourAura.improve'
        
 
     ])

@@ -30,42 +30,22 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
             buttons: [
                 {text: 'Okay'},
                 {text: 'Next',
-                type: 'button-positive',
-                    // onTap: function(e) {
-                    //     if (!$scope.data.image){
-                    //     //take user to upload page or directyly to camera
-                    //     e.preventDefalt();
-                    //     } else {
-                    //     return $scope.data.image
-                    //     }   
-                    // }
+                type: 'button-dark',
+                    onTap: function() {
+                     //camera function
+                     console.log('clicked next')
+                    }
                 }
             ]
-   		});
+    });
 
-		 // showPopup.then(function(res) {
-   //    		console.log('Thank you for working',res);
-   	};  
+            // showPopup.then(function() {
+            //   console.log('Tapped!');
+            // });
+  
+  }
 
-
-
-// 	}
-// ////green button upload
-// vm.capturePhoto =function(){
-//     navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
-// }
-// function uploadPhoto(data){
-// // this is where you would send the image file to server
- 
-// //output image to screen
-//     document.getElementById('cameraPic').src = data;
-// }
-
-
-
-
-//function for colors
-
+//function for colors (findColor is called in html on submit, showColor is called in this fn from above)
 	vm.colors = {}
 
 	vm.colors.one;
@@ -73,7 +53,6 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
 	vm.colors.three;
 	vm.colors.four;
 	
-
 	vm.findColor = function() {
 		
 		var res = [];
@@ -83,10 +62,43 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
 		showColor(res[Math.floor(Math.random() * res.length)])
 	}
 
-
+//closing tag for QuizCtrl
 }
 
 
+//                 function cameraFn() {
+// //calls from components folder of humans (?)    
+// // var human = new human.Beautiful(
+// // //     vm.patientInfo.firstName,
+// // //     vm.patientInfo.lastName,
+// // //     vm.patientInfo.dob
+// // //);
 
+// // human.Beautiful.push(human);
+
+//     if (window.Camera) {    
+//         var options = {
+//           quality: 50,
+//           destinationType: Camera.DestinationType.DATA_URL,
+//           sourceType: Camera.PictureSourceType.CAMERA,
+//           allowEdit: true,
+//           encodingType: Camera.EncodingType.JPEG,
+//           targetWidth: 100,
+//           targetHeight: 100,
+//           popoverOptions: CameraPopoverOptions,
+//           saveToPhotoAlbum: false,
+//           correctOrientation:true
+//         };
+
+//         $cordovaCamera.getPicture(options).then(function(imageData) {
+//           var image = document.getElementById('myImage');
+//           image.src = "data:image/jpeg;base64," + imageData;
+//         } else {
+//         //go to new state (at very least this state can be hardcoded aura image)
+//         $state.go('improve');
+//        }
+//   }
+      
+//   } 
 
 
