@@ -34,15 +34,36 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
                     onTap: function() {
                      //camera function
                      console.log('clicked next')
-                    }
+                     if (window.Camera) {    
+                        var options = {
+                          quality: 50,
+                          destinationType: Camera.DestinationType.DATA_URL,
+                          sourceType: Camera.PictureSourceType.CAMERA,
+                          allowEdit: true,
+                          encodingType: Camera.EncodingType.JPEG,
+                          targetWidth: 100,
+                          targetHeight: 100,
+                          popoverOptions: CameraPopoverOptions,
+                          saveToPhotoAlbum: false,
+                          correctOrientation:true
+                        };
+
+                        $cordovaCamera.getPicture(options).then(function(imageData) {
+                          var image = document.getElementById('myImage');
+                          image.src = "data:image/jpeg;base64," + imageData;
+                        }, function(err) {
+                        // error
+                        }); 
+                      } else {
+                        //go to new state (at very least this state can be hardcoded aura image)
+                        $state.go('colors');
+                        }
+                         
+                      }
                 }
             ]
     });
-
-            // showPopup.then(function() {
-            //   console.log('Tapped!');
-            // });
-  
+  //showColor closing
   }
 
 //function for colors (findColor is called in html on submit, showColor is called in this fn from above)
@@ -66,39 +87,6 @@ function QuizCtrl($cordovaCamera, $state, $ionicPopup) {
 }
 
 
-//                 function cameraFn() {
-// //calls from components folder of humans (?)    
-// // var human = new human.Beautiful(
-// // //     vm.patientInfo.firstName,
-// // //     vm.patientInfo.lastName,
-// // //     vm.patientInfo.dob
-// // //);
-
-// // human.Beautiful.push(human);
-
-//     if (window.Camera) {    
-//         var options = {
-//           quality: 50,
-//           destinationType: Camera.DestinationType.DATA_URL,
-//           sourceType: Camera.PictureSourceType.CAMERA,
-//           allowEdit: true,
-//           encodingType: Camera.EncodingType.JPEG,
-//           targetWidth: 100,
-//           targetHeight: 100,
-//           popoverOptions: CameraPopoverOptions,
-//           saveToPhotoAlbum: false,
-//           correctOrientation:true
-//         };
-
-//         $cordovaCamera.getPicture(options).then(function(imageData) {
-//           var image = document.getElementById('myImage');
-//           image.src = "data:image/jpeg;base64," + imageData;
-//         } else {
-//         //go to new state (at very least this state can be hardcoded aura image)
-//         $state.go('improve');
-//        }
-//   }
-      
-//   } 
+ 
 
 
